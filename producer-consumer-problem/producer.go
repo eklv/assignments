@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 type producer struct {
@@ -21,8 +20,6 @@ func (p *producer) produce() {
 				p.widgetChan <- widget
 				fmt.Println(p.name, "produced-", widget)
 			}(i)
-			fmt.Println(p.name, "produced", widgetLimit, "widgets")
-			time.Sleep(2 * time.Second) // just for better readability of output
 		}
 	}
 }
