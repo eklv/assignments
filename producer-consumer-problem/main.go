@@ -28,9 +28,8 @@ func main() {
 		go func(id int) {
 			defer wg.Done()
 			consumer := &consumer{
-				id:             id,
-				name:           fmt.Sprintf("consumer-%d", id),
-				widgetCapacity: make([]string, 0),
+				id:   id,
+				name: fmt.Sprintf("consumer-%d", id),
 			}
 			consumer.consume(producers)
 		}(i)

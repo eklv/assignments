@@ -6,9 +6,8 @@ import (
 )
 
 type consumer struct {
-	id             int
-	widgetCapacity []string
-	name           string
+	id   int
+	name string
 }
 
 func (c *consumer) consume(p []*producer) {
@@ -35,12 +34,10 @@ func (c *consumer) consume(p []*producer) {
 			}
 		default:
 			if i >= 3 {
-				//	fmt.Println(p[i].name, "doesnt have anymore widgets,", len(p[i].widgetChan), c.name, "switching to", p[0].name, len(p[0].widgetChan))
 				i = 0
 				widgetChan = p[0].widgetChan
 			} else {
 				i++
-				//	fmt.Println(p[i-1].name, "doesnt have anymore widgets,", len(p[i-1].widgetChan), c.name, "switching to", p[i].name, len(p[i-1].widgetChan))
 				widgetChan = p[i].widgetChan
 			}
 		}

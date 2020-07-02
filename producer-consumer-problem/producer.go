@@ -14,14 +14,15 @@ type producer struct {
 
 func (p *producer) produce() {
 	for {
-
-		for i := 0; i < getRandomNumber(1, 5); i++ {
+		widgetLimit := getRandomNumber(1, 5)
+		for i := 0; i < widgetLimit; i++ {
 			go func(index int) {
 				widget := RandStringBytes(5)
 				p.widgetChan <- widget
 				fmt.Println(p.name, "produced-", widget)
 			}(i)
-			time.Sleep(1 * time.Second)
+			fmt.Println(p.name, "produced", widgetLimit, "widgets")
+			time.Sleep(2 * time.Second) // just for better readability of output
 		}
 	}
 }
